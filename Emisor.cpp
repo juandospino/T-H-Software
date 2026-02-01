@@ -69,6 +69,7 @@ void loop() {
     Serial.println("❌ Fallo envío");
   }
 
-  delay(300000);
+  delay(2000);
 }
+
 
