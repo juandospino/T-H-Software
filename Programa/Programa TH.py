@@ -1,3 +1,5 @@
+from logging import root
+
 import serial
 import csv
 import time
@@ -20,6 +22,7 @@ class SensorMonitorGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Esteban Andres Conde,  Yosley Yael Avendaño,  Juan David Ospino,  Andres David Rodriguez")
+       
         
         self.is_running = False
         self.is_paused = False
@@ -76,8 +79,8 @@ class SensorMonitorGUI:
         self.find_serial_ports()
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
-       
     
+
     def setup_ui(self):
         # Frame principal (guardado como atributo)
         self.main_frame = ttk.Frame(self.root, padding="5")
@@ -94,7 +97,8 @@ class SensorMonitorGUI:
             self.main_frame,
             image_path1=Path("Logos") / "LogoSemillero.png",
             image_path2=Path("Logos") / "LogoFisica.png",
-            title_text="ThermoHumid Tracker"
+            image_path3=Path("Logos") / "UA.png",
+            title_text="Monitor de temperatura y humedad relativa"
         )
         title_frame.grid(row=0, column=0, columnspan=2, pady=(0, 10), sticky="ew")
         
@@ -254,7 +258,7 @@ class SensorMonitorGUI:
         self.axes[1].set_ylabel('Humedad (%)')
         self.axes[1].grid(True, alpha=0.3)
         
-        self.colors = ["#000000", "#0019FC", '#d62728', '#9467bd', '#2ca02c']
+        self.colors = ["#000000", "#0019FC", '#d62728', "#a547fd", "#00e608"]
         self.lines_temp = []
         self.lines_hum = []
         
@@ -464,7 +468,7 @@ class SensorMonitorGUI:
     
     def create_fullscreen_window(self):
         self.fullscreen_window = tk.Toplevel(self.root)
-        self.fullscreen_window.title("ThermoHumid Tracker")
+        self.fullscreen_window.title("Esteban Andres Conde,  Yosley Yael Avendaño,  Juan David Ospino,  Andres David Rodriguez")
         
         screen_width = self.fullscreen_window.winfo_screenwidth()
         screen_height = self.fullscreen_window.winfo_screenheight()
@@ -478,7 +482,7 @@ class SensorMonitorGUI:
         controls_frame = ttk.Frame(fullscreen_frame)
         controls_frame.pack(fill=tk.X, pady=(0, 10))
         
-        title_label = ttk.Label(controls_frame, text="📈  ThermoHumid Tracker", 
+        title_label = ttk.Label(controls_frame, text="📈  Monitor de temperatura y humedad relativa", 
                                font=("Arial", 16, "bold"))
         title_label.pack(side=tk.LEFT, padx=(0, 20))
         
