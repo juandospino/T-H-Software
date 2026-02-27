@@ -45,27 +45,27 @@ class ReportManager:
             summary_frame = ttk.Frame(notebook)
             notebook.add(summary_frame, text="📊 Resumen")
 
-            summary_text = tk.Text(summary_frame, wrap=tk.WORD, padx=10, pady=10, font=("Consolas", 10))
+            summary_text = tk.Text(summary_frame, wrap=tk.WORD, padx=10, pady=10, font=("New York Semibold", 11))
             summary_text.pack(fill=tk.BOTH, expand=True)
 
             report_text = " " * 50 + "\n"
             report_text += "REPORTE DE DATOS\n"
             report_text = "-" * 50 + "\n"
 
-            report_text += f" Fecha del reporte: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
-            report_text += f" Archivo de datos: {self.parent.csv_file if hasattr(self.parent, 'csv_file') else 'No disponible'}\n"
-            report_text += f" Datos recibidos: {self.parent.data_count if hasattr(self.parent, 'data_count') else 0}\n"
-            report_text += f" Unidad actual: {self.parent.temp_unit_var.get().title()}\n"
-            report_text += f" Tiempo transcurrido: {self.parent.get_time_text(self.parent.elapsed_time)}\n"
-            report_text += f" Estado: {'En ejecución' if self.parent.is_running else 'Detenido'}\n"
+            report_text += f" Fecha del reporte: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+            report_text += f" Archivo de datos: {self.parent.csv_file if hasattr(self.parent, 'csv_file') else 'No disponible'}\n\n"
+            report_text += f" Datos recibidos: {self.parent.data_count if hasattr(self.parent, 'data_count') else 0}\n\n"
+            report_text += f" Unidad actual: {self.parent.temp_unit_var.get().title()}\n\n"
+            report_text += f" Tiempo transcurrido: {self.parent.get_time_text(self.parent.elapsed_time)}\n\n"
+            report_text += f" Estado: {'En ejecución' if self.parent.is_running else 'Detenido'}\n\n"
 
             # Pestañas de datos por sensor
             for sensor_idx in range(5):
                 sensor_frame = ttk.Frame(notebook)
                 sensor_name = f"Sensor {sensor_idx}" if sensor_idx > 0 else "Sensor Local"
-                notebook.add(sensor_frame, text=f"🔹 {sensor_name}")
+                notebook.add(sensor_frame, text=f" {sensor_name}")
 
-                sensor_text = tk.Text(sensor_frame, wrap=tk.WORD, padx=10, pady=10, font=("Consolas", 10))
+                sensor_text = tk.Text(sensor_frame, wrap=tk.WORD, padx=10, pady=10, font=("New York Semibold", 11))
                 sensor_text.pack(fill=tk.BOTH, expand=True)
 
                 sensor_key = f'sensor{sensor_idx}'
